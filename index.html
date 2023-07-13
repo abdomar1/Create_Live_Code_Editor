@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="html.png" type="image/x-icon">
+    <title>live code Editor</title>
+</head>
+<body>
+
+    <div class="editor">
+        <div class="left">
+            <label ><img src="html.png" width="15px" alt=""> HTML</label>
+            <textarea  id="html-code"></textarea>
+            <label ><img src="css-3.png" width="15px" alt=""> CSS</label>
+            <textarea id="css-code"></textarea>
+            <label ><img src="js.png" width="15px" alt=""> JS</label>
+            <textarea id="js-code"></textarea>
+        </div>
+        <div class="right">
+            <iframe  id="output"></iframe>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    function run(){
+        let htmlCode = document.querySelector(".editor #html-code").value;
+        let cssCode = "<style>"+document.querySelector(".editor #css-code").value+"</style>";
+        let jsCode = document.querySelector(".editor #js-code").value;
+        let output= document.querySelector(".editor #output");
+        // console.log(htmlCode ,cssCode , jsCode , output);
+        output.contentDocument.body.innerHTML = htmlCode+cssCode;
+        output.contentWindow.eval(jsCode);
+    }
+    document.querySelector(".editor #html-code").addEventListener("keyup",run);
+    document.querySelector(".editor #css-code").addEventListener("keyup",run);
+    document.querySelector(".editor #js-code").addEventListener("keyup",run);
+    </script>
+</body>
+</html>
+
+
+
+
